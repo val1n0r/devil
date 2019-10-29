@@ -1,0 +1,104 @@
+{% include 'top.html'  %}
+{% load static %}
+
+<title> 
+        Бои
+ </title>
+
+
+
+{% if messages %}
+    {% for message in messages %}
+        <div id='blockwin'>
+          <p style='color:#000;text-align: center;'>{{ message }}</p>
+          
+        </div>
+
+{% endfor %}
+{% endif %}
+
+  {% if messages %}
+    {% for message in messages %}
+    <li class="{{ message.tags }}">
+      {% if 'win' in message.tags %}
+        <div id='blockwin'>
+          <p style='color:#000;text-align: center;'>{{ message|safe }}</p>
+          <img src="{% static "img/valuta/20.png" %}" alt="o" width="26" height="24">
+        </div>
+      {% elif 'loose' in message.tags %}
+        <div class='blockloose'>
+          <p style='color:#000;text-align: center;'>{{ message|safe }}</p>
+          <img src="{% static "img/valuta/20.png" %}" alt="o" width="26" height="24">
+        </div>
+
+    {% endif %}
+    {% endfor %}
+  {% endif %}
+
+
+    {% for i in enemy %}
+
+    <div class="main-info">
+
+    <span style='color:#fff;font-size:16px;'>{{ i.HeroName }}</span>
+     <span style='font-size:13px; color:#5ba429;'>({{ i.herolevel }} Ур.) </span>
+    <img src="{{ i.imghero.url }}" style='color:#2FA545;' width="80" height="80" class="lider-main" >
+
+
+
+    <ul>
+
+        <li>
+            <img src="{% static 'img/attr/Power.png' %}" width="32" height="32" >
+                <span style='font-size:18px;'> {{ i.attackPower }} </span>
+
+            <img src="{% static 'img/attr/armour.png' %}" width="32" height="32" >
+            <span style='font-size:18px;'> {{ i.armour }}</span><br>
+
+
+
+        <img src="{% static 'img/heart.png' %}" width="32" height="32">
+                 <span style='font-size:18px;'>{{ i.hitPoint }} </span>
+
+        </li>
+
+     
+
+
+        <br>
+    </ul>
+<div style='margin-top: -12px;'>
+
+ <form class='select-hero' name='swaphero' action='{{ i.get_absolute_url }}' method="post">
+    {% csrf_token %}
+    <input type='submit' value='' name='swaphero'>
+    
+    </form>
+    
+    </div>
+
+  
+    </div>
+
+    {% endfor %}
+
+
+
+        
+
+          <br>
+         
+
+
+
+
+
+         
+    {% include 'panel.html'  %}
+
+
+
+
+
+
+{% include 'footer.html'  %}

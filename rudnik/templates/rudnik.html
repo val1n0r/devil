@@ -1,0 +1,96 @@
+{% include 'top.html'  %}
+{% load static %}
+
+<title>Добыча Кнайтов | Рудник</title>
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div id='blockwin'>
+          <p style='color:#000;text-align: center;'>{{ message }}</p>
+          
+        </div>
+
+{% endfor %}
+{% endif %}
+
+<div class='main-info'>
+  <img src="{% static 'img/rudnik.png' %}" width="100" height="100" style='padding:5px; float:right;' >
+  <a href='#' style='text-decoration:none;'><h3 style='color:#319D5A;font-size:19px;margin-left:10px;'>Рудник ({{rudnikLevel}} уровень)</h3></a>
+  <ul style='margin-left:10px;'>
+
+    
+
+    
+    <li style='color:#fff;'>В руднике добываю кнайты </li>
+    <li style='color:#fff;'>Рудник приносит: {{TotalBonus}} <img src="{% static 'img/money/gold.png' %}" width="23" height="23" >  в сутки </li>
+    <br>
+    <li style='color:#fff;'>
+    {% if DoneRudnik %}
+    <h2 style=''> Рудник прокачан 
+    <img src="{% static 'img/accept.png' %}" width='22' height='22' style='margin-left:5px;margin-top:-7px;'>
+    
+    
+    </h2>  
+    <h3 style='margin-left:5px;'><a href='#'>Купить расширитель?</a></h3>
+    
+    {% else %}
+    <h2 style='margin-left:-5px;'>Прокачать рудник
+     <img src="{% static 'img/up_green.png' %}" width="17" height="16" style='margin-left:5px;margin-top:-5px;' > &nbsp; 
+     <span style='color:#319D5A;'>Ур. {{ link }}</span> </h2>
+    
+     <li style='display:inline;'>Цена:</li>
+    <img src="{% static 'img/money/gold.png' %}" width="23" height="23" > {{ price }} <br>
+     Бонус: + {{bonus}}
+    <img src="{% static 'img/money/gold.png' %}" width="23" height="23" > в сутки </li>
+    
+    <li><form class='upRudnik' name='addArmour' action='{{ link }}' method="post" onsubmit="return checkForm(this);">
+    {% csrf_token %}
+    
+    <input type='submit' value='' name='addArmour'>
+    
+    </form>  
+    <br>
+    {% endif %}
+    </li>
+
+    
+    
+   
+
+               
+    
+
+
+  </ul>
+
+  
+
+  </div>
+  {% if DoneRudnik %}
+  {% else %}
+  <div class='main-info'>
+  <h2 style='color:#319D5A;margin-left:10px;'>Информация</h2>
+  <ul style='margin-left:15px;'>
+  <li>
+    Бонус по уровням:<br> 
+    &nbsp;2-5 Ур. +1 <img src="{% static 'img/money/gold.png' %}" width="23" height="23" >  в сутки<br>
+    &nbsp;6-10 Ур. +2 <img src="{% static 'img/money/gold.png' %}" width="23" height="23" >  в сутки <br>
+    &nbsp;11-15 Ур. +3 <img src="{% static 'img/money/gold.png' %}" width="23" height="23" >  в сутки<br>
+    &nbsp;16-19 Ур. +5 <img src="{% static 'img/money/gold.png' %}" width="23" height="23" >  в сутки<br>
+   
+  </li>
+  <li><span style='color:#319D5A;font-size:18px;'> Итого:</span><br> </li>
+  <li>Рудник 19 уровня приносит - 69 кнайтов <img src="{% static 'img/money/gold.png' %}" width="23" height="23" > <li>
+  </ul>
+  </div>    {% endif %}
+
+
+        {% include 'panel.html' %}
+
+
+
+{% endblock content %}
+
+
+{% include 'footer.html'  %}

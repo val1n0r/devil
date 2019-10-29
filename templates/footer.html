@@ -1,0 +1,28 @@
+{% load static %}
+<div id="footer">
+<span>
+	<span class="nobr">
+	<img src="{% static "img/helmet.png" %}" alt="o" width="22" height="22">
+
+     {{ UserLevel }} Ур. <!--get lvl from db where id = -->
+     <img src="{% static 'img/star.png' %}"  width="25" height="25" alt="">
+     <span style='color:#C7BD1E;'> {{ UserXp }}/{{ xpfl }}</span><br>
+     <span style='font-size:16px;'>Ник:</span> <span style='color:#66CC33;font-size:16px;'>{{ user.get_username }}</span><br>
+     <span style='font-size:16px;'>Время:</span> <span style='color:#66CC33;font-size:16px;'>{{ dn }}</span>
+     <span style='font-size:16px;'> &nbsp </span> <span style='color:#fff;font-size:16px;'>{{ tn }}</span>
+<br>
+            <div style="text-align:right;padding:3px;" class="small">
+
+            <form>
+            <button type="submit" formaction="{% url 'logout' %}" style="border: 0;margin-top:15px; background: transparent">
+                <img src="{% static 'img/buttons/exit.png' %}" alt="submit" name="submit" width="110" height="40" />
+    </button>
+
+            </form>
+
+        </span>
+
+</div>
+        </div>
+    </body>
+</html>

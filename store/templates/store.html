@@ -1,0 +1,140 @@
+{% include 'top.html' %}
+
+{% load static %}
+
+
+<title> 
+        Магазин
+</title>
+
+
+<div class='main-info'>
+  <img src="{% static 'img/potions/png/4.png' %}" width="75" height="75" style='padding:5px; float:right;' >
+  <a href='#' style='text-decoration:none;'><h3 style='color:#319D5A;font-size:19px;margin-left:10px;'>Зелья</h3></a>
+  <ul style='margin-left:10px;padding-bottom:5px;'>
+
+    <li> <img src="{% static 'img/potions/png/4.png' %}" width="32" height="32" >
+      <a href='#'>Зелье Ускорения</a>
+
+    </li>
+
+    <li>
+    	<img src="{% static 'img/potions/png/alchemy.png' %}" width="32" height="32" >
+    	<a href='{% url 'GoldPage' %}'>Зелье Алхимика</a>
+	</li>
+
+
+    <li> <img src="{% static 'img/potions/png/doublexp.png' %}" width="32" height="32" >
+    <a href='{% url 'XpPage' %}'>Эссенция двойного опыта</a></li>
+
+
+  </ul>
+
+  
+
+  </div>
+  
+
+      <div class='main-info'>
+       <img src="{% static 'img/all/arm_arm.png' %}" width="75" height="75" style='padding:5px; float:right;' >
+  <a href='#' style='text-decoration:none;'><h3 style='color:#319D5A;font-size:19px;margin-left:10px;'>Броня</h3></a>
+  <ul style='margin-left:10px;padding-bottom:5px;'>
+
+    <li> <img src="{% static 'img/helmets/png/16.png' %}" width="32" height="32" >
+      <a href='#'>Шлемы</a>
+
+    </li>
+
+    <li>
+    	<img src="{% static 'img/cuirass/png/elv_cuirass.png' %}" width="32" height="32" >
+    	<a href='#'>Нагрудники</a>
+	</li>
+
+
+    <li> <img src="{% static 'img/glove/png/8.png' %}" width="32" height="32" > <a href="#">Перчатки</a></li>
+    <li> <img src="{% static 'img/torso/png/5.png' %}" width="32" height="32" > <a href="#">Ножная броня</a></li>
+    <li> <img src="{% static 'img/boot/png/qqqq.png' %}" width="32" height="32" > <a href="#">Ботинки</a></li>
+    
+    
+
+  </ul>
+
+  
+
+  </div>
+
+<div class='main-info'>
+  <img src="{% static 'img/all/7.png' %}" width="80" height="75" style='padding:5px; float:right;' >
+  <a href='#' style='text-decoration:none;'><h3 style='color:#319D5A;font-size:19px;margin-left:10px;'>Оружие</h3></a>
+  <ul style='margin-left:10px;padding-bottom:5px;'>
+
+    <li> <img src="{% static 'img/dagger/png/dag.png' %}" width="32" height="32" >
+      <a href='#'>Мечи</a>
+
+    </li>
+
+    <li>
+    	<img src="{% static 'img/axe/png/a3.png' %}" width="32" height="32" >
+    	<a href='#'>Топоры</a>
+	</li>
+  <li> <img src="{% static 'img/shields/png/4.png' %}" width="32" height="32" > <a href="#">Щиты</a></li>
+
+    
+
+
+  </ul>
+
+  
+
+  </div>
+<div class='main-info'>
+  <img src="{% static 'img/ring/png/8.png' %}" width="75" height="75" style='padding:5px; float:right;' >
+  <a href='#' style='text-decoration:none;'><h3 style='color:#319D5A;font-size:19px;margin-left:10px;'>Украшения</h3></a>
+  <ul style='margin-left:10px;padding-bottom:5px;'>
+
+    <li> <img src="{% static 'img/ring/png/6.png' %}" width="32" height="32" >
+      <a href='#'>Кольца</a>
+
+    </li>
+
+    <li>
+    	<img src="{% static 'img/jewel/png/1.png' %}" width="32" height="32" >
+    	<a href='#'>Амулеты</a>
+	</li>
+
+
+    
+
+
+  </ul>
+
+  
+
+  </div>
+
+
+
+<div class='main-info'>
+    <img src="{% static 'img/all/b_08.PNG' %}" width="64" height="64"  style='padding:5px; float:left;'>
+    <a href='#' style='text-decoration:none;'><h2 style='color:#319D5A;font-size:22px;margin-left:10px;'>Герои</h2></a>
+    <a href='{% url 'heroList' %}'>Купить Героя </a>
+    
+    </div>
+<!--
+    <div class='main-info'>
+
+
+        <img src="{% static 'img/all/b_01.PNG' %}" width="64" height="64"  style=' float:left;padding:5px;'>
+      <a href='#' style='text-decoration:none;'><h2 style='color:#319D5A;font-size:22px;margin-left:10px;'>Техника</h2></a>
+
+
+      </div>-->
+      
+        {% include 'panel.html' %}
+
+
+
+
+
+
+{% include 'footer.html'  %}

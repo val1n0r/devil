@@ -1,0 +1,16 @@
+{% load static %}
+<div class='block'>
+	<img src="{% static 'img/all/8.png' %}" alt="o" width="70" height="70" style='margin-left:25px;float:right;'> 
+	<h2 style='margin-left: 20px;'>Knight War 2019</h2>
+
+	<span style='margin-left:25px;font-weight: 500;'>Регистраций:</span>
+	 <span style='font-size:18px;color:#D8DF1B;'><b> {{ reg_count }}</b></span> <br />
+
+	 
+	 <span style='margin-left:5px;font-weight: 500;margin-left:25px;'>Онлайн:</span> 
+	 <span style='font-size:18px;color:#D8DF1B;'><b> 784</b></span><br>
+	 <span style='margin-left:48%;margin-top:5%;'> <a href=""> Контакты </a> -  <a href=""> MayarStudio </a> </span>
+	 <br><br>
+	 <span style='margin-left:29%;'>{{ d_now|date:'Y-m-d H:i' }} </span>
+
+</div>

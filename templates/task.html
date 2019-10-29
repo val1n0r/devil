@@ -1,0 +1,121 @@
+{% include 'top.html' %}
+
+{% load static %}
+
+<body>
+{% if messages %}
+    {% for message in messages %}
+        <div id='blockwin'>
+          <p style='color:#000;text-align: center;'>{{ message }}</p>
+          
+        </div>
+
+{% endfor %}
+{% endif %}
+
+{% for t in tasks %}
+<div class='main-info'>
+<ul>
+<img src='{{ t.taskImg.url }}' width='100' height='100' style='padding:5px;float:left;'>
+    <span style='font-size:19px;color: rgb(255, 162, 92);margin-left:5px;'> {{ t.taskName}} </span>
+    
+    
+    <ul >
+    <li style='margin-left:15px;'>
+    <span style='font-size:16px;color:#fff;margin-left:5px;'>{{ t.taskInfo }}</span>
+    
+    </li>
+
+    <li style=''>
+           <span style='font-size:16px;color:#fff;margin-left:5px;'>Награда:</span>
+            <span style='font-size:16px;color:#fff;margin-left:5px;'>{{t.taskReward_sc}} 
+            <img src='{% static 'img/money/sc.png' %}' width='22' height='22'> </span>
+            <span style='font-size:16px;color:#fff;margin-left:5px;'>{{t.taskReward_knights}} 
+            <img src='{% static 'img/money/gold.png' %}' width='22' height='22'> </span>
+
+    </li> 
+
+    <li>
+            
+            <span style='font-size:16px;color:#fff;margin-left:5px;'> Опыт: + {{t.taskReward_xp}}
+            <img src='{% static 'img/star.png' %}' width='22' height='22' style='margin-top:-5px;'> </span>
+
+    </li>
+
+  <li>
+  {% if t.taskStatus %}
+
+  
+    
+        <progress style='margin-left:30%;' value="{{ t.taskCurrentWin }}" min="0" max="{{ t.taskWinCount }}"></progress>
+ 
+
+  {% else %}
+
+  <form class='acceptTask' name='addArmour' action='{{ t.get_absolute_url }}' method="post" onsubmit="return checkForm(this);">
+    {% csrf_token %}
+    
+    <input type='submit' value='' name='acceptTask'>
+    
+    </form>  
+    {% endif %}
+    </li>
+        
+
+        
+</ul>
+</div>
+{% endfor %}
+
+
+
+{% for t in uptask %}
+<div class='main-info'>
+<ul>
+<img src='{{ t.taskImg.url }}' width='100' height='100' style='padding:5px;float:left;'>
+    <span style='font-size:19px;color: rgb(255, 162, 92);margin-left:5px;'> {{ t.taskName}} </span>
+    
+    
+    <ul >
+    <li style='margin-left:15px;'>
+    <span style='font-size:16px;color:#fff;margin-left:5px;'>{{ t.taskInfo }}</span>
+    
+    </li>
+
+    <li style=''>
+           <span style='font-size:16px;color:#fff;margin-left:5px;'>Награда:</span>
+            <span style='font-size:16px;color:#fff;margin-left:5px;'>{{t.taskReward_sc}} 
+            <img src='{% static 'img/money/sc.png' %}' width='22' height='22'> </span>
+            <span style='font-size:16px;color:#fff;margin-left:5px;'>{{t.taskReward_knights}} 
+            <img src='{% static 'img/money/gold.png' %}' width='22' height='22'> </span>
+
+    </li> 
+
+    <li>
+            
+            <span style='font-size:16px;color:#fff;margin-left:5px;'> Опыт: + {{t.taskReward_xp}}
+            <img src='{% static 'img/star.png' %}' width='22' height='22' style='margin-top:-5px;'> </span>
+
+    </li>
+
+  <li>
+  {% if t.taskStatus %}
+  <progress style='margin-left:30%;' value="0"  max="{{ t.TaskDone }}"></progress>
+  {% else %}
+  <form class='acceptTask' name='addArmour' action='{{ t.get_absolute_url }}' method="post" onsubmit="return checkForm(this);">
+    {% csrf_token %}
+    
+    <input type='submit' value='' name='acceptTask'>
+    
+    </form>  
+    {% endif %}
+    </li>
+        
+
+        
+</ul>
+</div>
+{% endfor %}
+
+{% include 'panel.html' %}
+{% include 'footer.html'%}

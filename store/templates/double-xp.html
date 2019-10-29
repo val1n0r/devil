@@ -1,0 +1,61 @@
+{% include 'top.html'  %}
+{% load static %}
+
+<title>Эссенция двойного опыта</title>
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div id='blockwin'>
+          <p style='color:#000;text-align: center;'>{{ message }}</p>
+          
+        </div>
+
+{% endfor %}
+{% endif %}
+
+<div class='main-info'>
+  <img src="{% static 'img/potions/png/doublexp.png' %}" width="75" height="75" style='padding:5px; float:right;' >
+  <a href='#' style='text-decoration:none;'><h3 style='color:#319D5A;font-size:19px;margin-left:10px;'>Эссенция двойного опыта</h3></a>
+  <ul style='margin-left:10px;'>
+
+    
+
+    
+    <li style='color:#fff;'>Удваивает весь получаемый опыт <b> в 2 раза</b></li>
+    {% if currentBuff %}
+    <li> 
+     Активированный опыт: {{ currentBuff }}/100  <img src="{% static 'img/star.png' %}" alt="submit" width="25" height="25">
+    </li>
+    {% endif %}
+    <li style='margin-left:85px;color:#fff;margin-top:10px;'> Цена: <img src="{% static 'img/money/gold.png' %}" width='26' height='26'> 4  
+
+ <form class='AddBonus'   name='buy_Xp' action='{{ DxLink }}' method="post" onsubmit="return checkForm(this);">
+    {% csrf_token %}
+    <input type='submit' value='' name='buy_Xp'>
+    
+    </form>  
+    
+   
+                 
+    </li>
+               
+    
+
+
+  </ul>
+
+  
+
+  </div>
+
+
+
+        {% include 'panel.html' %}
+
+
+
+{% endblock content %}
+
+
+{% include 'footer.html'  %}

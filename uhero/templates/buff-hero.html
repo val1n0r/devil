@@ -1,0 +1,101 @@
+{% include 'top.html' %}
+{% load static %}
+
+<script type="text/javascript">
+            function checkForm(form){
+                form.buyhelm.disabled = true;
+                return true;        }
+        </script>
+<h2 style='color:rgb(255, 162, 92);'> Прокачать героя <img src="{% static 'img/lvl.png' %}" width='32' height='28'>
+ <span style='color:#278108;'>{{ hero_name }}</span> </h2>
+
+
+{% if messages %}
+    {% for message in messages %}
+        <div id='blockwin'>
+          <p style='color:#000;text-align: center;'>{{ message }}</p>
+          
+        </div>
+
+{% endfor %}
+{% endif %}
+
+
+<div class='main-info'>
+<ul>
+<img src="{% static 'img/attr/pwr_up.png' %}" width='70' height='70' style='float:left;'>
+<li>&nbsp;Сила {{ pwr_level }} Ур. - Бонус + {{ pwr_all }}</li>
+{% if fullPower %}
+ &nbsp; Макс. <img src="{% static 'img/accept.png' %}" width='24' height='24' style='float:left;margin-left:5px;'>
+{% else %}
+<li><img src="{% static 'img/up_green.png' %}" width='16' height='16' style='float:left;margin-left:5px;'> &nbsp;Добавить  + 25</li>
+<li>
+    <img src="{% static 'img/money/sc.png' %}" width='20' height='20' style='float:left;margin-left:5px;'> &nbsp; {{ pwr_price_sc }}  
+    <img src="{% static 'img/money/gold.png' %}" width='20' height='20'>&nbsp; {{ pwr_price_knights }} 
+</li>
+<form class='addUp' name='addPwr' action='{{ buffHero }}' method="post" onsubmit="return checkForm(this);">
+    {% csrf_token %}
+    <input type="hidden" name="form-token" value='{{ csrf_token }}'>
+    <input type='submit' value='' name='addPwr'>
+    
+    </form>
+    {% endif %}
+</ul>
+
+</div>
+
+
+<div class='main-info'>
+<ul>
+<img src="{% static 'img/attr/armour_up.png' %}" width='70' height='70' style='float:left;'>
+<li>&nbsp; Броня {{ armour_level }} Ур. - Бонус  {{ armour_all }}</li>
+{% if fullArmor %}
+ &nbsp; Макс. <img src="{% static 'img/accept.png' %}" width='24' height='24' style='float:left;margin-left:5px;'>
+ {% else %}
+<li><img src="{% static 'img/up_green.png' %}" width='16' height='16' style='float:left;margin-left:5px;'> &nbsp;Добавить  + 25</li>
+<li>
+    <img src="{% static 'img/money/sc.png' %}" width='20' height='20' style='float:left;margin-left:5px;'> &nbsp; {{ armour_price_sc }}  
+    <img src="{% static 'img/money/gold.png' %}" width='20' height='20'>&nbsp; {{ armour_price_knights }} 
+</li>
+<form class='addUp' name='addArmour' action='{{ buffHero }}' method="post" onsubmit="return checkForm(this);">
+    {% csrf_token %}
+    
+    <input type='submit' value='' name='addArmour'>
+    
+    </form>
+    {% endif %}
+</ul>
+
+</div>
+
+
+<div class='main-info'>
+<ul>
+<img src="{% static 'img/attr/hp_up.png' %}" width='70' height='70' style='float:left;'>
+<li>&nbsp; Здоровье {{ hp_level }} Ур. - Бонус  {{ hp_all }}</li>
+{% if fullHp %}
+ &nbsp; Макс. <img src="{% static 'img/accept.png' %}" width='24' height='24' style='float:left;margin-left:5px;'>
+ {% else %}
+<li><img src="{% static 'img/up_green.png' %}" width='16' height='16' style='float:left;margin-left:5px;'> &nbsp;Добавить  + 25</li>
+<li>
+    <img src="{% static 'img/money/sc.png' %}" width='20' height='20' style='float:left;margin-left:5px;'> &nbsp; {{ hp_price_sc }}  
+    <img src="{% static 'img/money/gold.png' %}" width='20' height='20'>&nbsp; {{ hp_price_knights }} 
+</li>
+    <form class='addUp' name='addHp' action='{{ buffHero }}' method="post" >
+        {% csrf_token %}
+        
+        <input type='submit' value='' name='addHp'>
+    
+    </form>
+    {% endif %}
+</ul>
+</div>
+
+
+
+
+
+
+
+   {% include 'panel.html' %}
+   {% include 'footer.html' %}

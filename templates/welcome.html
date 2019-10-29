@@ -1,0 +1,118 @@
+{% include 'top.html' %}
+{% load static %}
+
+<body>
+<h2 style='color:rgb(255, 162, 92);font-size:20px;'>Выбор героя <img src="{% static 'img/all/b_08.PNG' %}" width="32" height="32" ></h2>
+{% for h in hero %}
+<div class='main-info'>
+  
+  <ul style='margin-left:10px;margin-top:5px;'>
+    <li>
+    	<img src="{{ h.HeroImg.url }}" width='90' height="90" style='margin-top:-5px;'  class="lider-main">
+    	
+    </li>
+    <li style="font-size:17px;vertical-align: top;color:#66CC33;font-weight:500;">{{ h.HeroName  }}</li>
+    <li style="font-size:15px;vertical-align: top;color:#FFF;">
+    	<img src="{% static 'img/pw1.png' %}" width='30' height="30"> {{ h.HeroPower }}
+    	
+    	&nbsp;&nbsp;
+    	<img src="{% static 'img/heart.png' %}" width='30' height="30"> {{ h.HeroHp }}
+    	&nbsp;&nbsp;
+    	<img src="{% static 'img/attr/armour.png' %}" width='30' height="30"> {{ h.HeroArmour }}
+    </li>
+
+    <br>
+
+    <li>
+    	<span style='font-size:16px;'>Цена: </span>
+    	<img src="{% static 'img/money/sc.png' %}" width='24' height="24"> 
+    	<span style='font-size:14px;color:#FFF;'>{{ h.price_silver_coin }}</span>
+    	<img src="{% static 'img/money/gold.png' %}" width='24' height="24"> 
+    	<span style='font-size:14px;color:#fff;'>{{ h.priceKnights }}</span>
+
+    	
+    </li>
+
+    <li style='margin-top:25px;margin-left:52%;margin-bottom:15px;'>
+    <form class='AddBonus'   name='buy_hero' action='{{ h.get_abolute_url }}' method="post" onsubmit="return checkForm(this);">
+    {% csrf_token %}
+    <input type='submit' value='' name='buy_Xp'>
+    
+    </form>  
+    
+    
+   <!-- <a href='{{ h.get_abolute_url }}'><img src="{% static 'img/buttons/buy.png' %}" width='100' height="35"></a></li>-->
+
+  </ul>
+
+
+
+
+  </div>
+  </div>
+{% endfor %}
+<div class='main-info'>
+<h3 style='margin-left:15px;color:#319D5A;'>Будут доступны на след. уровнях</h3>
+</div>
+
+{% for he in NextLvlHero %}
+<div class='main-info'>
+
+  
+  <ul style='margin-left:10px;margin-top:5px;'>
+    <li>
+        <img src="{{ he.imghero.url }}" width='90' height="90" style='margin-top:-5px;'  class="lider-main">
+        
+    </li>
+    <li style="font-size:15px;vertical-align: top;color:#FFF;">{{ he.HeroName  }}</li>
+    <li>
+        <img src="{% static 'img/pw1.png' %}" width='26' height="26"> {{ he.attackPower }}
+        
+        &nbsp;&nbsp;
+        <img src="{% static 'img/heart.png' %}" width='32' height="32"> {{ he.hitPoint}}
+        &nbsp;&nbsp;
+        <img src="{% static 'img/weapon/shield/4.png' %}" width='28' height="28"> {{ he.armour }}
+    </li>
+
+    <br>
+
+    <li>
+        <span style='font-size:18px;'>Цена: </span>
+        <img src="{% static 'img/valuta/sc.png' %}" width='26' height="26"> 
+        <span style='font-size:18px;color:#FFF;'>{{ he.priceGold }}</span>
+        <img src="{% static 'img/valuta/20.png' %}" width='26' height="26"> 
+        <span style='font-size:18px;color:#fff;'>{{ he.priceKnights }}</span>
+
+        
+    </li>
+    
+  </ul>
+
+
+
+
+  </div>
+{% endfor %}
+
+
+
+
+<div class='main-info' style='height:80px;'>
+    <h2 style='margin-left:15px;color:#EB8C38;'>Подсказки</h2>
+    <p style='margin-left:25px;'>
+        Каждый герой может быть прокачан и улучшен в дальнейшем.
+
+
+    </p>
+    
+</div>
+
+
+
+
+
+
+
+<div class='main-info'>
+
+{% include 'footer.html' %}</div>

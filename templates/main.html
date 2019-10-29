@@ -1,0 +1,141 @@
+{% include 'top.html' %}
+
+{% load static %}
+
+<body>
+{% if messages %}
+    {% for message in messages %}
+        <div id='blockwin'>
+          <p style='color:#000;text-align: center;'>{{ message }}</p>
+          
+        </div>
+
+{% endfor %}
+{% endif %}
+<div class='main-info'>
+    {% for i in ActiveHero %}
+    <img src='{{ i.imghero.url }}' width='140' height='140' style='padding:5px;float:left;'>
+    
+    <span style='font-size:19px;color: rgb(255, 162, 92);margin-left:5px;'> {{ i.HeroName }} </span>({{ i.herolevel}} Ур.)
+    
+    
+    <ul style=''>
+    
+        <li style=''>
+            <img src='{% static 'img/attr/power.png' %}' width='32' height='32' style='padding:5px; margin-left:5px;'>{{ i.attackPower }} 
+            <span style='color:#66CC33'> (+250) </span>
+        </li> 
+
+        <li style=''>
+            <img src='{% static 'img/attr/armour.png' %}' width='42' height='40' style='padding:5px;'>{{ i.armour }}
+            <span style='color:#66CC33'> (+250) </span>
+        </li>
+
+        <li style=''>
+            <img src='{% static 'img/attr/hp.png' %}' width='40' height='40' style='padding:5px;margin-left:2px;'>{{ i.hitPoint }}
+            <span style='color:#66CC33'> (+250) </span>
+        </li>
+
+        <li><img src='{% static 'img/win.png' %}' width='32' height='32' style='padding:5px; margin-left:5px;'>Побед: 780 
+        <img src='{% static 'img/medal.png' %}' width='32' height='32' style='padding:5px; margin-left:5px;'> Звание: Генерал
+        </li>
+    
+    </ul>
+    {% endfor %}
+    
+</div>
+<div class='main-info'>
+    <span style='margin-left:5px;padding:5px;border-radius:5px;font-size:15px;'> <a href='{% url 'swapPage' %}'> 	&hArr; Сменить героя</a>
+    <img src='{% static 'img/all/8.png' %}' width='40' height='40' style=''>
+    <a href='{% url 'upPage' %}'>Прокачать героя &#8593; &#8593;</a> </span>
+    </div>
+
+
+
+
+
+<div class='main-info'>
+<ul style='margin-top:10px;margin-left:10px;'>
+<img src="{% static 'img/energy.png' %}" width='55' height='55' style='float:left;margin-top:10px;'>
+<li style='margin-left:10px;' >&nbsp; Добавить 60 энергии </li>
+
+
+<li>
+    <span style='margin-left:10px;'>Цена:</span>
+    <img src="{% static 'img/money/gold.png' %}" width='30' height='30' style='margin-left:8px;'>&nbsp; 2
+</li>
+
+    <form class='buy_energy' name='addEnergy' action=' {{ add }}' method="post" onsubmit="return checkForm(this);">
+        {% csrf_token %}
+        <input type='submit' value='' name='addEnergy'>
+    </form>
+ 
+</ul>
+
+</div>
+
+<div class='main-info'>
+<ul style='margin-top:10px;margin-left:10px;'>
+<img src="{% static 'img/potions/png/dx_pot.png' %}" width='60' height='60' style='float:left;margin-top:10px;'>
+<li style='margin-left:10px;' >&nbsp; Эссенция двойного опыта </li>
+<li style='margin-left:10px;' >&nbsp; Удваивает опыт в боях </li>
+
+
+<li>
+    <span style='margin-left:10px;'>Цена:</span>
+    <img src="{% static 'img/money/gold.png' %}" width='30' height='30' style='margin-left:8px;'>&nbsp; 2
+</li>
+    
+    <form class='buy_energy' name='addXp' action='{{ add }}' method="post" onsubmit="return checkForm(this);">
+        {% csrf_token %}
+        <input type='submit' value='' name='addXp'>
+    </form>
+ 
+</ul>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class='buffline' style='font-weight: 600;'>
+
+    {% if dx %}
+    <div>
+
+        <img src="{% static 'img/potions/PNG/dx_pot.png' %}" width='20' height='20' class='menu-ico-buff' style='float:left;'>
+        <span style='font-size:14px;'>Опыт <br></span>
+        <span style='font-size:14px;'>{{ dx }}/100 </span>
+    </div>
+    {% endif %}
+
+
+
+
+
+    {% if gb %}
+    <div>
+        <img src="{% static 'img/potions/PNG/alchemy.png' %}" width='18' height='18' class='menu-ico-buff'>
+        <span style='font-size:14px;'>{{ gb }} </span>
+    </div>
+    {% endif %}
+           
+
+    <div>
+        <img src="{% static 'img/potions/PNG/1.png' %}" width='20' height='20' class='menu-ico-buff'>10 min
+    </div>
+
+ </div>
+
+
+
+{% include 'panel.html' %}
+{% include 'footer.html'%}

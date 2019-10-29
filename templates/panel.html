@@ -1,0 +1,67 @@
+ {% load static %}
+
+
+ 
+ <div class="main-menu">
+ 
+      <div class='task' style='font-weight: 600;'><a href='{% url 'kPage' %}'><img src="{% static 'img/all/b_02.PNG' %}" class='menu-ico'>Задания</a></div>
+      <div class='fighting'><a href='{% url 'fightPage' %}'><img src="{% static 'img/all/b_10.PNG' %}" style='margin-left:5px;' class='menu-ico'>Сражения</a></div>
+
+        <div class='magcss'>
+            <a href='#'><img src="{% static 'img/all/mcastle.PNG' %}" class='menu-ico'><br>Замок</a>
+        </div>
+
+
+
+        <div class='tournir'>
+          <a href='#'><img src="{% static 'img/all/b_07.PNG' %}" class='menu-ico'><br>Турнир</a>
+        </div>
+
+    </div>
+
+<ul class="menu-link">
+  <li class="links"><img src="{% static 'img/all/8.png' %}" alt="kazarma" width="24" height="24">
+            <a href="{% url 'storePage' %}">Магазин</a></li>
+
+
+  <li class="links"><img src="{% static 'img/house.png' %}" alt='kazarma' width='24' height='24'>
+            <a href="#">Ферма</a></li>
+
+
+  <li class="links"><img src="{% static 'img/backpack.png' %}" alt="kazarma" width="24" height="24">
+        <a href="#">Инвентарь</a></li>
+
+      <li class="links"><img src="{% static 'img/backpack.png' %}" alt="kazarma" width="24" height="24">
+        <a href="#">экипа</a></li>
+
+
+  <li class="links"><img src="{% static 'img/msg.png' %}" alt="kazarma" width="24" height="24">
+        <a href="#">Сообщения</a></li>
+
+
+  <li class="links"><img src="{% static 'img/tour2.png' %}" alt="kazarma" width="24" height="24">
+          <a href="#">Мой профиль</a></li>
+
+
+  <li class="links"><img src="{% static "img/rudnik.png" %}" alt="kazarma" width="24" height="24">
+                <a href="{% url 'rudnikPage' %}">Рудник</a> </li>
+  
+  <li class="links"><img src="{% static "img/money/gold.png" %}" alt="kazarma" width="24" height="24">
+                <a href="{% url 'converterPage' %}">Золотой банк</a> </li>
+
+
+
+    <li class="links"><img src="{% static 'img/balista.png' %}" alt='kazarma' width='24' height='24'>
+         	<a href="#">Боевые орудия</a></li>
+
+    <li class="links"><img src="{% static 'img/star.png' %}" alt='kazarma' width='24' height='24'>
+          <a href="#">Рейтинг игроков</a></li>
+
+
+
+
+
+
+
+
+</ul>
